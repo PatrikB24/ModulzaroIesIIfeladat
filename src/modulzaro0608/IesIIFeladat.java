@@ -166,7 +166,13 @@ public class IesIIFeladat {
         int[][] matrix = negyzetesMatrix(5);
         System.out.println("Kétdimenziós négyzetes mátrix:");
         kiirMatrix(matrix);
-        System.out.println();
+        System.out.println("");
+        
+        
+        //Mátrix invertálása
+        System.out.println("Mátrix invertálása:");
+        invertalas(matrix);
+        kiirMatrix(matrix);
 
     }
 
@@ -192,4 +198,33 @@ public class IesIIFeladat {
             System.out.println();
         }
     }
+    
+    public static void invertalas(int[][] matrix) {
+    int maxErtek = 100; 
+    int minErtek = 0;
+
+    // Minimum és maximum keresése a főátlón
+    for (int i = 0; i < matrix.length; i++) {
+        if (matrix[i][i] < maxErtek) {
+            maxErtek = matrix[i][i];
+        }
+        if (matrix[i][i] > minErtek) {
+            minErtek = matrix[i][i];
+        }
+    }
+
+    // Mátrix feltöltése a főátló elemeken kívül mindegyik másik
+    for (int i = 0; i < matrix.length; i++) {
+        for (int j = 0; j < matrix[i].length; j++) {
+            if (i == j) {
+                matrix[i][j] = 0; // a főátlóba nullát írunk
+            } else {
+                matrix[i][j] = velSzam(maxErtek, minErtek); // a főátlón kívüli elemekre véletlenszámot írunk
+            }
+        }
+    }
 }
+    
+    }
+
+
