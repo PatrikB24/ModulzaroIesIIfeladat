@@ -1,4 +1,3 @@
-
 package modulzaro0608;
 
 import java.util.Random;
@@ -6,31 +5,29 @@ import java.util.Random;
 public class IesIIFeladat {
 
     public static int[] tomb;
-    
+
     public static void main(String[] args) {
 
         ProgramozoiTetelekFeladat();
         System.out.println("");
         AdatszerkezetTombFeladat();
-        
-        
-        
+
     }
 
     private static void ProgramozoiTetelekFeladat() {
 
         System.out.println("I. Programozói tételek feladat: ");
-    // Tömb feltöltése véletlen számokkal
+        // Tömb feltöltése véletlen számokkal
         tomb = feltolt(10);
         //tömb elemeinek kiírása
         kiir(4);
-        
+
         //Véletlen szám visszaadása
         int also = 0;
         int felso = 20;
         int veletlenSzam = velSzam(also, felso);
         System.out.println("Véletlen szám: " + veletlenSzam);
-        
+
         //Programozói tételek eredményeinek kiírása
         System.out.println("Összegzés: " + osszegzes());
         System.out.println("Megszámlálás: " + megszamlalas());
@@ -42,7 +39,7 @@ public class IesIIFeladat {
         System.out.println("Lineáris keresés (13): " + linKer(13));
 
     }
-    
+
     //egy darab véletlenszám alsó, felső határ
     public static int velSzam(int also, int felso) {
         Random rnd = new Random();
@@ -130,6 +127,7 @@ public class IesIIFeladat {
         }
         return false;
     }
+
     //metódus a metódusban, tökéletes szám e az adott szám
     public static boolean tokeletesSzam(int szam) {
         int osszeg = 0;
@@ -164,10 +162,34 @@ public class IesIIFeladat {
     private static void AdatszerkezetTombFeladat() {
 
         System.out.println("II. Adatszerkezet: tömb feladat:");
-        
-        
+
+        int[][] matrix = negyzetesMatrix(5);
+        System.out.println("Kétdimenziós négyzetes mátrix:");
+        kiirMatrix(matrix);
+        System.out.println();
+
     }
-    
-    
-    
+
+    public static int[][] negyzetesMatrix(int meret) {
+        int[][] matrix = new int[meret][meret];
+        for (int i = 0; i < meret; i++) {
+            for (int j = 0; j < meret; j++) {
+                if (i == j) {
+                    matrix[i][j] = velSzam(1, 100); // Főátlóba véletlenszámok
+                } else {
+                    matrix[i][j] = 0; // Mindenhova máshova 0
+                }
+            }
+        }
+        return matrix;
+    }
+
+    private static void kiirMatrix(int[][] matrix) {
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                System.out.print(matrix[i][j] + "\t");
+            }
+            System.out.println();
+        }
+    }
 }
